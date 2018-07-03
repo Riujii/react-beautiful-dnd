@@ -9,7 +9,7 @@ import hooks from './middleware/hooks';
 import dropAnimationFinish from './middleware/drop-animation-finish';
 import dimensionMarshalStopper from './middleware/dimension-marshal-stopper';
 import autoScroll from './middleware/auto-scroll';
-// import pendingDrop from './middleware/pending-drop';
+import pendingDrop from './middleware/pending-drop';
 import maxScrollUpdater from './middleware/max-scroll-updater';
 import type { DimensionMarshal } from './dimension-marshal/dimension-marshal-types';
 import type { StyleMarshal } from '../view/style-marshal/style-marshal-types';
@@ -74,8 +74,11 @@ export default ({
         drop,
         // When a drop animation finishes - fire a drop complete
         dropAnimationFinish,
-        // TODO: enable for dynamic dimensions
-        // pendingDrop,
+        // If a drop occurs while a collection is happening we wait
+        // for the collection to finish before performing the drop.
+        // This middleware will perform a drop action after a PUBLISH
+        // occurs during a DROP_PENDING phase
+        pendingDrop,
         maxScrollUpdater,
         autoScroll(getScroller),
         // Fire hooks for consumers

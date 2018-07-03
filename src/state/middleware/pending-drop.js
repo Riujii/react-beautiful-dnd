@@ -13,7 +13,7 @@ export default (store: Store) => (next: Action => mixed) => (
     return;
   }
 
-  // A bulk replace occurred - check if
+  // A publish occurred - check if
   // 1. there was a pending drop
   // 2. that the pending drop is no longer waiting
 

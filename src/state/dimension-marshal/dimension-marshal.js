@@ -2,7 +2,6 @@
 import { type Position } from 'css-box-model';
 import invariant from 'tiny-invariant';
 import createPublisher, { type Publisher, type Provided } from './publisher';
-// TODO: state folder reaching into view
 import * as timings from '../../debug/timings';
 import type {
   DraggableId,
